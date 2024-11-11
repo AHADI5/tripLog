@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <menuitem name="Trip Log" id="menu_root_trip" web_icon="triplog, static/description/icon.png">
+        <menuitem id="main_menu_for_trips" name="Trips" action="triplog.action_trip" />
+        <menuitem id="main_menu_for_routes" name="Routes">
+            <menuitem id="submenu_routes_for_route" name="Routes" action="triplog.action_route_submenu" />
+            <menuitem id="submenu_routes_for_route_type" name="Routes type" action="triplog.action_route_type_submenu" />
+        </menuitem>
+        <menuitem id="main_menu_for_emplacement" name="Emplacements" action="triplog.action_emplacement" />
+    </menuitem>
+</odoo>
