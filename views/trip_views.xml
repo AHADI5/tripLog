@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <!-- From view -->
+        <record id = "trip_from_view" model = "ir.ui.view">
+            <field name = "name">trip.form.view</field>
+            <field name = "model">trip</field>
+            <field name = "arch" type = "xml">
+                <form>
+                    <header>
+                        <field name = "state" widget = "statusbar" statusbar_visible = "current,ongoing,completed,canceled"/>
+                    </header>
+
+                    <sheet>
+                        <group colspan = "2">
+                            <group>
+                                <field name = "origin"/>
+                                <field name = "destination"/>
+                            </group>
+
+                            <group>
+                                <field name = "start_time" string = "Start time"/>
+                                <field name = "end_time" string = "End time"/>
+                            </group>
+                        </group>
+
+                        <group>
+                            <field name = "vehicle_id"/>
+                        </group>
+
+                        <group>
+                            <field name = "trip_type"/>
+                        </group>
+
+                        <group>
+                            <field name = "kilometer_driven"/>
+                        </group>
+                    </sheet>
+
+                    <!-- Chatter section-->
+                    <div class="oe_chatter">
+                        <field name = "message_ids" widget = "mail_thread"/>
+                        <field name = "message_follower_ids" widget = "mail_followers"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!--  List view -->
+        <record id = "trip_list_view" model = "ir.ui.view">
+            <field name = "name">trip.tree.view</field>
+            <field name = "model">trip</field>
+            <field name = "arch" type = "xml">
+                <tree>
+                    <field name = "start_time"/>
+                    <field name = "end_time"/>
+                    <field name = "origin"/>
+                    <field name = "destination"/>
+                    <field name = "vehicle_id"/>
+                    <field name = "kilometer_driven"/>
+                    <field name = "trip_type"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- THIS UNDER-SECTION ONLY HAVE ACTIONS ON OURS Main MENUS and Sub-menus-->
+
+        <!-- Main menu action view for trips view -->
+        <record id="action_trip" model="ir.actions.act_window">
+            <field name="name">Trip</field>
+            <field name="res_model">trip</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="help" type="html">-->
+<!--                <p class="o_view_nocontent_smiling_face">-->
+<!--                    Create a new trip-->
+<!--                </p>-->
+<!--            </field>-->
+        </record>
+    </data>
+</odoo>

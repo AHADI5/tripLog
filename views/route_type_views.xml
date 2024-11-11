@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <!-- MAIN VIEWS : TREE AND FORM VIEW FOR ROUTE Types -->
+        <!-- Route Types FORM view -->
+        <record id = "route_type_form_view" model = "ir.ui.view">
+            <field name = "name">route.type.view.form</field>
+            <field name = "model">route.type</field>
+            <field name = "arch" type = "xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <div class="oe_edit_only">
+                                <label for="name" />
+                            </div>
+                            <h1 class="mb32">
+                                <field name="name" widget="char_emojis" class="mb16" placeholder="Route Type Name" />
+                            </h1>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Routes type TREE view -->
+        <record id = "route_type_list_view" model = "ir.ui.view">
+            <field name = "name">route.type.view.tree</field>
+            <field name = "model">route.type</field>
+            <field name = "arch" type = "xml">
+                <tree>
+                    <field name = "name" />
+                </tree>
+            </field>
+        </record>
+        <!-- *************************************************************** -->
+
+        <!-- THIS UNDER-SECTION ONLY HAVE MAIN ACTIONS ON OURS Sub MENU Route Types-->
+        <!-- Submenu action view for Route Types view -->
+        <record id="action_route_type_submenu" model="ir.actions.act_window">
+            <field name="name">Route Types</field>
+            <field name="res_model">route.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new route type
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

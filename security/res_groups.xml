@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="module_category_trip" model="ir.module.category">
+        <field name="name">Trip Log</field>
+        <field name="description">Helps you handle your trips and logging them</field>
+        <field name="sequence">50</field>
+    </record>
+
+    <!--    For demo users : they can manage their own trip-->
+    <record id="group_trip_user" model="res.groups">
+        <field name="name">User: Manage own trip</field>
+        <field name="category_id" ref="triplog.module_category_trip" />
+        <!-- implied_ids makes the new group inherit permissions from an existing group -->
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+        <!--   setting up users     -->
+        <field name="users" eval="[(4, ref('base.user_demo'))]" />
+    </record>
+
+    <!--    This is the admin group-->
+    <record id="trip_manager" model="res.groups">
+        <field name="name">Manager: Manage all trips</field>
+        <field name="category_id" ref="triplog.module_category_trip" />
+        <!-- implied_ids makes the new group inherit permissions from an existing group -->
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+        <!--   setting up users     -->
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
+    </record>
+
+    <!--    Driver group-->
+    <record id="driver_group" model="res.groups">
+        <field name="name">Driver: create,update,read trip and upload document</field>
+        <field name="category_id" ref="triplog.module_category_trip" />
+    </record>
+
+    <record id="fleet_manager_group" model="res.groups">
+        <field name="name">Fleet Manager: Manage trips, handle invoicing, handles Routes and Emplacement</field>
+        <field name="category_id" ref="triplog.module_category_trip"/>
+    </record>
+
+    <!--  This record will help yu to add category to the technical section of your user setting  -->
+    <record id="group_trip_test" model="res.groups">
+        <field name="name">Test: Manage all trips</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+</odoo>
